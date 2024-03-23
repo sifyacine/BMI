@@ -1,11 +1,15 @@
 import 'dart:math';
 
+import 'package:bmi/colors.dart';
 import 'package:flutter/material.dart';
 
+
+// ignore: must_be_immutable
 class ResultsPage extends StatelessWidget {
   double height;
   double weight;
-  ResultsPage({super.key, required this.height, required this.weight});
+  bool isMale;
+  ResultsPage({super.key, required this.height, required this.weight, required this.isMale});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +30,46 @@ class ResultsPage extends StatelessWidget {
               break;
     }
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Text("the result is "),
-            Text(results.toStringAsFixed(2)),
-            Text("$note"),
-            IconButton(onPressed: (){
-              Navigator.pop(context);
-            }, icon: Icon(Icons.refresh))
-          ],
+      backgroundColor: isMale ? kBlueColor : kRedColor,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "BMI is ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                ),
+              ),
+              SizedBox(height: 30,),
+              Text(
+                results.toStringAsFixed(2),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                ),
+              ),
+              SizedBox(height: 30,),
+              Text(
+                note,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                ),
+              ),
+              SizedBox(height: 30,),
+              IconButton(onPressed: (){
+                Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                ),
+                  ),
+      ],
+          ),
         ),
       ),
     );
