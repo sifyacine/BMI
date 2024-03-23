@@ -1,3 +1,4 @@
+import 'package:bmi/colors.dart';
 import 'package:bmi/results.dart';
 import 'package:flutter/material.dart';
 
@@ -21,71 +22,75 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "BMI",
+          "BMI calculator",
+          style: TextStyle(color: kBlueColor),
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(
-                onTap: () => setState(() {
-                  ismale = true;
-                }),
-                child: Container(
-                  margin: EdgeInsets.only(top: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black, width: 5),
-                  ),
-                  width: 180,
-                  height: 200,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(
-                        Icons.male,
-                        color: Colors.white,
-                        size: 50,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () => setState(() {
+                    ismale = true;
+                  }),
+                  child: Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 20),
+                      decoration: BoxDecoration(
+                        color: kBlueColor,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.black, width: 5),
                       ),
-                      Text('Male')
-                    ],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(
+                            Icons.male,
+                            color: Colors.white,
+                            size: 50,
+                          ),
+                          Text('Male')
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              InkWell(
-                onTap: () => setState(() {
-                  ismale = false;
-                }),
-                child: Container(
-                  margin: EdgeInsets.only(top: 20),
-                  width: 180,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black, width: 5),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(
-                        Icons.female,
-                        color: Colors.white,
-                        size: 50,
-                      ),
-                      Text('Female')
-                    ],
+                SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () => setState(() {
+                    ismale = false;
+                  }),
+                  child: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    width: 180,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.black, width: 5),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(
+                          Icons.female,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        Text('Female')
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Row(
             children: [
